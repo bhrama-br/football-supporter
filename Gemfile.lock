@@ -120,6 +120,8 @@ GEM
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
     jsonapi-renderer (0.2.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -218,6 +220,19 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.11.1)
+    rswag (2.6.0)
+      rswag-api (= 2.6.0)
+      rswag-specs (= 2.6.0)
+      rswag-ui (= 2.6.0)
+    rswag-api (2.6.0)
+      railties (>= 3.1, < 7.1)
+    rswag-specs (2.6.0)
+      activesupport (>= 3.1, < 7.1)
+      json-schema (~> 2.2)
+      railties (>= 3.1, < 7.1)
+    rswag-ui (2.6.0)
+      actionpack (>= 3.1, < 7.1)
+      railties (>= 3.1, < 7.1)
     sidekiq (6.5.7)
       connection_pool (>= 2.2.5)
       rack (~> 2.0)
@@ -255,6 +270,8 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.4)
   rspec-rails
+  rswag
+  rswag-specs
   sidekiq
   sidekiq-cron
   tzinfo-data

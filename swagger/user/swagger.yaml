@@ -1,0 +1,208 @@
+---
+openapi: 3.0.1
+info:
+  title: Api Users
+  version: v1
+  description: Api to User
+paths:
+  "/api/auth":
+    post:
+      summary: New User
+      tags:
+      - Auth
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - email
+              - name
+              - password
+              - password_confirmation
+  "/api/auth/sign_in":
+    post:
+      summary: Sign in User
+      tags:
+      - Auth
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/api/auth/validate_token":
+    get:
+      summary: Validate token User
+      tags:
+      - Auth
+      responses:
+        '200':
+          description: successful
+  "/api/user/dashboard":
+    parameters:
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    get:
+      summary: dashboard player
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+  "/api/user/players/{player_id}/subscribe":
+    parameters:
+    - name: player_id
+      in: path
+      description: player_id
+      required: true
+      schema:
+        type: string
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    post:
+      summary: subscribe player
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+  "/api/user/players/{player_id}/unsubscribe":
+    parameters:
+    - name: player_id
+      in: path
+      description: player_id
+      required: true
+      schema:
+        type: string
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    post:
+      summary: unsubscribe player
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+  "/api/user/players":
+    parameters:
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list players
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+  "/api/user/players/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show player
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:4000

@@ -21,6 +21,7 @@ gem 'kaminari'
 gem 'rack-cors'
 gem 'sidekiq'
 gem "sidekiq-cron"
+gem "rswag"
 
 
 group :development, :test do
@@ -30,6 +31,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem "rswag-specs"
 end
 
 group :development do

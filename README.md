@@ -8,6 +8,11 @@ Follow the news from your favorite player.
 - [@user_app](https://github.com/bhrama-br/football-supporter-user)
 
 
+## Link Swagger
+- [@Swagger](http://localhost:4000/api-docs)
+
+
+
 
 ## Versions
 
@@ -51,6 +56,12 @@ Create DB
   rails db:create db:migrate db:seed
 ```
 
+Create Swagger
+
+```bash
+  rails rswag
+```
+
 Start the server
 
 ```bash
@@ -76,12 +87,12 @@ Start the server sidekiq
 - active_model_serializers
 - kaminari
 - sidekiq
+- rswag
 
 
 ## Future improvements
 
 - Improve test coverage
-- Create documentation framework for endpoints
 - Create server staging
 
 

@@ -1,0 +1,254 @@
+---
+openapi: 3.0.1
+info:
+  title: Api Admin
+  version: v1
+  description: Api to admin
+paths:
+  "/api/admin_auth/sign_in":
+    post:
+      summary: Sign in Admin
+      tags:
+      - Auth
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/api/admin_auth/validate_token":
+    get:
+      summary: Validate token admin
+      tags:
+      - Auth
+      responses:
+        '200':
+          description: successful
+  "/api/admin/players":
+    parameters:
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list players
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+  "/api/admin/players/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show player
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+  "/api/admin/players/{player_id}/notification":
+    parameters:
+    - name: player_id
+      in: path
+      description: player_id
+      required: true
+      schema:
+        type: string
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: auth
+      in: body
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+        required:
+        - message
+    post:
+      summary: create_notification player
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+  "/api/admin/{id}/notification":
+    parameters:
+    - name: id
+      in: path
+      description: Notification id
+      required: true
+      schema:
+        type: string
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    put:
+      summary: "/api/admin/{id}/notification"
+      tags:
+      - Players
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: "/api/admin/{id}/notification"
+      tags:
+      - Players
+      parameters:
+      - name: id
+        in: path
+        description: Notification id
+        required: true
+        schema:
+          type: string
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/api/admin/users":
+    parameters:
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+  "/api/admin/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    - name: access-token
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: uid
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: client
+      in: header
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:4000
+    accessToken:
+      default: ''
+    uid:
+      default: ''
+    client:
+      default: ''
